@@ -1,31 +1,14 @@
-import * as figlet from "figlet";
+
 import { select, input } from '@inquirer/prompts';
 import chalk from "chalk";
 const { exec } = require('child_process');
 
-import { gradientTheme } from "../utils/gradientDefault";
+import { InitialMessage } from '../utils/initialMessage';
 import { ccTags } from "../utils/allConvencionalCommitsTags";
 import { colors } from "../utils/colors";
 
 export async function createCommit() {
-    figlet.text("GITCC", {
-        font: "Isometric3",
-        horizontalLayout: "default",
-        whitespaceBreak: true
-    },
-        function (err: Error | null, data: undefined | string) {
-            if (err) {
-                console.log("Something went wrong...");
-                console.dir(err);
-
-                return;
-            };
-
-            if (data !== undefined) {
-                console.log(gradientTheme(data));
-            };
-        }
-    );
+    await InitialMessage();
 
     // Type of commit (Ex: feat)
     const type = await select({
@@ -48,7 +31,6 @@ export async function createCommit() {
     // Executing the command to create a commit
     const commitCommand = `git commit -m"${type} ${title}" ${description !== "" ? `-m"${description}"` : ""}`;
     console.log(chalk.hex(colors.primary)(`Executando comando $${commitCommand}`));
-
     exec(commitCommand, (error: Error, stdout: string, stderr: string) => {
         if (error) {
             console.error(chalk.red(`Erro: ${error.message}`));
