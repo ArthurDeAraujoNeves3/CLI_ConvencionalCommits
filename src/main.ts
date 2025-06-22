@@ -1,6 +1,6 @@
 const { Command } = require('commander');
 const program = new Command();
-const { createCommit } = require("./commands/createCommit");
+import { createCommit } from "./commands/createCommit";
 
 program
     .name('gitcc')
@@ -9,6 +9,7 @@ program
 
 program
     .command('create')
+    .option("--emoji", "Utiliza de emojis para melhor visualização dos commits")
     .description('Criar commit. Passando a flag --emoji voce utiliza emojis para diferencia os commits')
     .action(createCommit);
 

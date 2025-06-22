@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:ts": "tsx watch src/main.ts",
-    "dev": "node src/main.ts"
+    "dev": "tsx src/main.ts"
   },
   "keywords": [],
   "author": "ArthurDeAraujoNeves3",
   "license": "ISC",
   "packageManager": "pnpm@10.12.1",
   "devDependencies": {
+    "@types/figlet": "^1.7.0",
     "@types/node": "^24.0.3",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3"
@@ -19,6 +19,8 @@
   "dependencies": {
     "@inquirer/prompts": "^7.5.3",
     "chalk": "^5.4.1",
-    "commander": "^14.0.0"
+    "commander": "^14.0.0",
+    "figlet": "^1.8.1",
+    "gradient-string": "^3.0.0"
   }
 }
