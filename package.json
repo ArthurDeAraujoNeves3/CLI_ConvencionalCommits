@@ -10,6 +10,7 @@
   "keywords": [],
   "author": "ArthurDeAraujoNeves3",
   "license": "ISC",
+  "bin": "./dist/main.js",
   "packageManager": "pnpm@10.12.1",
   "devDependencies": {
     "@types/figlet": "^1.7.0",
