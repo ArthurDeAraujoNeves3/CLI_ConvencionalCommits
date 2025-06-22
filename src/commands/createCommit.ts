@@ -4,19 +4,32 @@ import chalk from "chalk";
 const { exec } = require('child_process');
 
 import { InitialMessage } from '../utils/initialMessage';
-import { ccTags } from "../utils/allConvencionalCommitsTags";
+import { ccTags, ccTagsEmojis } from "../utils/allConvencionalCommitsTags";
 import { colors } from "../utils/colors";
 
-export async function createCommit() {
+type createCommitProps = {
+    emoji: boolean
+};
+
+export async function createCommit(mode: createCommitProps) {
     await InitialMessage();
 
     console.log(chalk.hex(colors.primary)("Tenha certeza de ter executado o comando git add antes"));
     
+    let type;
     // Type of commit (Ex: feat)
-    const type = await select({
-        message: "Qual o tipo do commit",
-        choices: ccTags
-    });
+    if (mode.emoji) {
+        type = await select({
+            message: "Qual o tipo do commit",
+            choices: ccTagsEmojis
+        });
+    } else {
+        type = await select({
+            message: "Qual o tipo do commit",
+            choices: ccTags
+        });
+    };
+
     // (Required)
     const title = await input({
         message: "Dê um título ao commit:", validate: (message) => {
