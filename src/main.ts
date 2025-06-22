@@ -9,7 +9,7 @@ program
     .version('1.0.0');
 
 program
-    .command('create')
+    .command('commit')
     .option("-e, --emoji", "Utiliza de emojis para melhor visualização dos commits")
     .description('Cria um commit. Passando a flag --emoji voce utiliza emojis para diferenciar os commits')
     .action((mode: { emoji: boolean }) => createCommit(mode));
