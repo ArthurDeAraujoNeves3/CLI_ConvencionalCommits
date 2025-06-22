@@ -1,5 +1,5 @@
 {
-  "name": "gitcc",
+  "name": "@aarthur.neves/gitcc-cli",
   "version": "1.0.0",
   "description": "",
   "main": "./dist/main.js",
@@ -10,7 +10,9 @@
   "keywords": [],
   "author": "ArthurDeAraujoNeves3",
   "license": "ISC",
-  "bin": "./dist/main.js",
+  "bin": {
+    "gitcc": "./dist/main.js"
+  },
   "packageManager": "pnpm@10.12.1",
   "devDependencies": {
     "@types/figlet": "^1.7.0",
