@@ -1,9 +1,11 @@
 import * as figlet from "figlet";
 import { select, input } from '@inquirer/prompts';
+import chalk from "chalk";
 const { exec } = require('child_process');
 
 import { gradientTheme } from "../utils/gradientDefault";
 import { ccTags } from "../utils/allConvencionalCommitsTags";
+import { colors } from "../utils/colors";
 
 export async function createCommit() {
     figlet.text("GITCC", {
@@ -24,7 +26,8 @@ export async function createCommit() {
             };
         }
     );
-    console.log("Executando git add .");
+
+    console.log(chalk.hex(colors.primary)("Executando git add ."));
     exec("git add .", (error: Error, stdout: string, stderr: string) => {
         if (error) {
             console.error(`Erro: ${error.message}`);
@@ -55,18 +58,22 @@ export async function createCommit() {
     // (Optional)
     const description = await input({ message: "Explique detalhadamente as mudanças alterações feitas:" });
 
+    // Executing the command to create a commit
     const commitCommand = `git commit -m"${type} ${title}" ${description !== "" ? `-m"${description}"` : ""}`;
-
-    // Executing the command
+    console.log(chalk.hex(colors.primary)(`Executando comando ${commitCommand}`));
+    
     exec(commitCommand, (error: Error, stdout: string, stderr: string) => {
         if (error) {
             console.error(`Erro: ${error.message}`);
+          
             return;
-        }
+        };
         if (stderr) {
             console.error(`stderr: ${stderr}`);
+          
             return;
-        }
-        console.log(`stdout: ${stdout}`);
+        };
+
+        console.log(chalk.red("Erro ao criar commit. Verifique que você executou o comando git add"));
     });
 };
