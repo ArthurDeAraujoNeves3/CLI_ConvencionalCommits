@@ -10,6 +10,8 @@ import { colors } from "../utils/colors";
 export async function createCommit() {
     await InitialMessage();
 
+    console.log(chalk.hex(colors.primary)("Tenha certeza de ter executado o comando git add antes"));
+    
     // Type of commit (Ex: feat)
     const type = await select({
         message: "Qual o tipo do commit",
@@ -35,12 +37,12 @@ export async function createCommit() {
         if (error) {
             console.error(chalk.red(`Erro: ${error.message}`));
             console.log("Verifique se você tem alguma alteração feita ou se rodou o comando $git add");
-          
+
             return;
         };
         if (stderr) {
             console.error(`stderr: ${stderr}`);
-          
+
             return;
         };
 
