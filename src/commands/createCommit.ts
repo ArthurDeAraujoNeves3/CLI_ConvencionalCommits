@@ -74,6 +74,6 @@ export async function createCommit() {
             return;
         };
 
-        console.log(chalk.red("Erro ao criar commit.", stderr));
+        console.log(chalk.red("Erro ao criar commit! Verifique se você tem alguma alteração feita"));
     });
 };
