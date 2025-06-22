@@ -60,7 +60,7 @@ export async function createCommit() {
 
     // Executing the command to create a commit
     const commitCommand = `git commit -m"${type} ${title}" ${description !== "" ? `-m"${description}"` : ""}`;
-    console.log(chalk.hex(colors.primary)(`Executando comando ${commitCommand}`));
+    console.log(chalk.hex(colors.primary)(`Executando comando $${commitCommand}`));
 
     exec(commitCommand, (error: Error, stdout: string, stderr: string) => {
         if (error) {
