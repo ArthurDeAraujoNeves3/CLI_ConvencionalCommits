@@ -27,19 +27,6 @@ export async function createCommit() {
         }
     );
 
-    console.log(chalk.hex(colors.primary)("Executando git add ."));
-    exec("git add .", (error: Error, stdout: string, stderr: string) => {
-        if (error) {
-            console.error(`Erro: ${error.message}`);
-            return;
-        }
-        if (stderr) {
-            console.error(`stderr: ${stderr}`);
-            return;
-        }
-        console.log(`stdout: ${stdout}`);
-    });
-
     // Type of commit (Ex: feat)
     const type = await select({
         message: "Qual o tipo do commit",
@@ -64,7 +51,8 @@ export async function createCommit() {
 
     exec(commitCommand, (error: Error, stdout: string, stderr: string) => {
         if (error) {
-            console.error(`Erro: ${error.message}`);
+            console.error(chalk.red(`Erro: ${error.message}`));
+            console.log("Verifique se você tem alguma alteração feita ou se rodou o comando $git add");
           
             return;
         };
@@ -74,6 +62,6 @@ export async function createCommit() {
             return;
         };
 
-        console.log(chalk.red("Erro ao criar commit! Verifique se você tem alguma alteração feita"));
+        console.log(stdout);
     });
 };
