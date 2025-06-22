@@ -15,21 +15,12 @@ export async function createCommit(mode: createCommitProps) {
     await InitialMessage();
 
     console.log(chalk.hex(colors.primary)("Tenha certeza de ter executado o comando git add antes"));
-    
-    let type;
-    // Type of commit (Ex: feat)
-    if (mode.emoji) {
-        type = await select({
-            message: "Qual o tipo do commit",
-            choices: ccTagsEmojis
-        });
-    } else {
-        type = await select({
-            message: "Qual o tipo do commit",
-            choices: ccTags
-        });
-    };
 
+    // Type of commit (Ex: feat)
+    const type = await select({
+        message: "Qual o tipo do commit",
+        choices: mode.emoji ? ccTagsEmojis : ccTags
+    });
     // (Required)
     const title = await input({
         message: "Dê um título ao commit:", validate: (message) => {

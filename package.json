@@ -1,13 +1,19 @@
 {
   "name": "@aarthur.neves/gitcc-cli",
-  "version": "1.0.1",
-  "description": "",
+  "version": "1.0.2",
+  "description": "CLI para criar commits usando o padrão do Convencional Commits",
   "main": "./dist/main.js",
   "scripts": {
     "dev": "tsx src/main.ts",
     "build": "tsc"
   },
-  "keywords": [],
+  "keywords": [
+    "git"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArthurDeAraujoNeves3/gitcc.git"
+  },
   "author": "ArthurDeAraujoNeves3",
   "license": "ISC",
   "bin": {
