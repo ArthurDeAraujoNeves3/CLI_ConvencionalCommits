@@ -1,6 +1,6 @@
 {
   "name": "@aarthur.neves/gitcc-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "CLI para criar commits usando o padrão do Convencional Commits",
   "main": "./dist/main.js",
   "scripts": {

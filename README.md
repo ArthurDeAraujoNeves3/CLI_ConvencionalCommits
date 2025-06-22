@@ -52,3 +52,8 @@ Comando para o build
 ```shell
 pnpm run build
 ```
+
+Ao rodar o build, coloque esse comando no topo do arquivo main.js
+```
+#!/usr/bin/env node
+```
